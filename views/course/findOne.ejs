@@ -15,14 +15,8 @@
             <%= course.chapters %>
         </td>
         <td>
-            <td>
-                <a href="/course/edit/<%=course.id%>">edit</a></td>
-            <td>
-                <form action="/course/destroy/<%=course.id%>" method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="submit" name="" value="Delete">
-                </form>
-            </td>
+            <td><a href="/course/edit/<%=course.id%>">edit</a></td>
+            <td><a href="/course/distroy/<%=course.id%>">edit</a></td>
     </tr>
 
 </table>
