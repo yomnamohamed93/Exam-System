@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 col-sm-push-4">
+            <form action="/question/create" method="POST" class="form-signin">
+                <h2 class="form-signin-heading">Create an Account</h2>
+                <input type="text" name="question_head" placeholder="question head" class="form-control">
+                <input type="text" name="answers[]" placeholder="first answer" class="form-control">
+                <input type="text" name="answers[]" placeholder="second answer" class="form-control">
+                <input type="text" name="answers[]" placeholder="third answer" class="form-control">
+                <input type="text" name="correct_answer" placeholder="correct answer" class="form-control">
+                <input type="text" name="difficulty" placeholder="edifficulty level" class="form-control">
+                <input type="text" name="objective" placeholder="objective" class="form-control">
+                <input type="text" name="course" placeholder="course" class="form-control"> <br>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Question">
+            </form>
+        </div>
+    </div>
+</div>
