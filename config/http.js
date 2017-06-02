@@ -37,7 +37,6 @@ module.exports.http = {
             'bodyParser',
             'handleBodyParserError',
             'compress',
-            'myRequestLogger',
             'methodOverride',
             'myRequestLogger',
             'poweredBy',
@@ -48,18 +47,23 @@ module.exports.http = {
             '404',
             '500'
         ],
-
+        methodOverride: require('method-override')(function(req, res) {
+            if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+                console.log('Starting Request: ' + req.body._method);
+                var method = req.body._method;
+                delete req.body._method;
+                return method;
+            }
+        }),
         /****************************************************************************
          *                                                                           *
          * Example custom middleware; logs each request to the console.              *
          *                                                                           *
          ****************************************************************************/
-
         myRequestLogger: function(req, res, next) {
             console.log("Requested :: ", req.method, req.url);
             return next();
         },
-        methodOverride: require('method-override')('_method'),
         /***************************************************************************
          *                                                                          *
          * The body parser that will handle incoming multipart HTTP requests. By    *

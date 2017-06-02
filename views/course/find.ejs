@@ -14,10 +14,10 @@
             <td>
                 <%= course.chapters %>
             </td>
-            <td> <a href="/course/<%=course.id%>">show</a></td>
+            <td><a href="/course/<%=course.id%>">show</a></td>
             <td><a href="/course/edit/<%=course.id%>">edit</a></td>
             <td>
-                <form action="/course/destroy/<%=course.id%>" method="POST">
+                <form action="/course/<%=course.id%>" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="submit" name="" value="Delete">
                 </form>

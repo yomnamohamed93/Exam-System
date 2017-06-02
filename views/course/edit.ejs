@@ -1,8 +1,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 col-sm-push-4">
-            <form action="/course/update/<%= course.id %>" method="POST" class="form-signin">
+            <form action="/course/<%= course.id %>" method="POST" class="form-signin">
                 <h2 class="form-signin-heading">EditCourse</h2>
+                <input type="hidden" name="_method" value="PUT">
                 <input type="text" name="name" value="<%= course.name %>" class="form-control">
                 <input type="text" name="chapters" value="<%= course.chapters %>" class="form-control">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Edit Course">

@@ -12,10 +12,9 @@ module.exports = {
 
     create: function(req, res) {
         Course.create(req.body).exec(function(err, result) {
-            if (err) {
-                //Handle Error
-            }
-            return res.redirect('/course')
+            if (err) {}
+            // redirect must be called inside this callback, not outside
+            return res.redirect('/course');
         });
     },
 
@@ -27,25 +26,19 @@ module.exports = {
     },
 
     findOne: function(req, res) {
-        sails.log(req.method, req.param('id'));
         Course.findOne(req.param('id'), function(err, course) {
             if (err) { return next(err); }
-            if (!course) { return next("course not found"); }
+            if (!course) { return next('course not found'); }
             return res.view({ course: course });
         });
     },
 
     destroy: function(req, res) {
-        // Course.findOne(req.param('id'), function(err, course) {
-        //     if (err) { return next(err); }
-        //     if (!course) { return next("course not found"); }
-        // });
-        sails.log(req.method, req.param('id'));
         Course.destroy(req.param('id'), function(err, course) {
             if (err) { return next(err); }
+            // redirect must be called inside this callback, not outside
+            return res.redirect('/course');
         });
-        return res.redirect('/course')
-
     },
     edit: function(req, res) {
         Course.findOne(req.param('id'), function(err, course) {
@@ -59,8 +52,8 @@ module.exports = {
     update: function(req, res) {
         Course.update(req.param('id'), req.params.all(), function(err) {
             if (err) { return next(err); }
+            // redirect must be called inside this callback, not outside
+            return res.redirect('/course');
         });
-        return res.redirect('/course')
-
     },
 };
