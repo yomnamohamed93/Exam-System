@@ -1,12 +1,17 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-sm-4 col-sm-push-4">
+        <div class="col-sm-8 col-md-6 col-lg-4 push-sm-2 push-md-3 push-lg-4 text-center">
+            <br>
+            <div>
+                <h2>Adminstration Panel</h2>
+                <h3>Add New Course</h3>
+            </div>
             <form action="/course/<%= course.id %>" method="POST" class="form-signin">
-                <h2 class="form-signin-heading">EditCourse</h2>
                 <input type="hidden" name="_method" value="PUT">
                 <input type="text" name="name" value="<%= course.name %>" class="form-control">
                 <input type="text" name="chapters" value="<%= course.chapters %>" class="form-control">
-                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Edit Course">
+                <br>
+                <input type="submit" class="btn btn-lg btn-primary" value="Edit Course">
             </form>
         </div>
     </div>
