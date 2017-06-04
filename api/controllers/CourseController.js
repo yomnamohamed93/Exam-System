@@ -17,7 +17,8 @@ module.exports = {
                 return res.redirect('/course/new');
             }
             // redirect must be called inside this callback, not outside
-            return res.redirect('/course');
+            //return res.redirect('/course');
+            res.json(course);
         });
     },
 
@@ -33,8 +34,8 @@ module.exports = {
         Course.findOne(req.param('id')).populateAll().exec(function(err, course) {
             if (err) { return next(err); }
             if (!course) { return next('course not found'); }
-            //return res.view({ course: course });
-            res.json(course);
+            return res.view({ course: course });
+            //res.json(course);
         });
     },
 

@@ -21,9 +21,19 @@
                 <input type="text" name="answers[]" placeholder="first answer" class="form-control">
                 <input type="text" name="answers[]" placeholder="second answer" class="form-control">
                 <input type="text" name="answers[]" placeholder="third answer" class="form-control">
-                <input type="text" name="correct_answer" placeholder="correct answer" class="form-control">
-                <input type="text" name="difficulty" placeholder="edifficulty level" class="form-control">
-                <input type="text" name="objective" placeholder="objective" class="form-control">
+                <input type="checkbox" name="correct_answer[]" value="1">a</input>
+                <input type="checkbox" name="correct_answer[]" value="2">b</input>
+                <input type="checkbox" name="correct_answer[]" value="3">c</input>
+                <select class="form-control" name="difficulty">
+                        <option>Simple</option>
+                        <option>Difficult</option>
+                        </select>
+                <select class="form-control" name="objective">
+                        <option>understanding</option>
+                        <option>reminding</option>
+                        <option>creativity</option>
+                        </select>
+
                 <input type="hidden" name="course_id" value="<%=course.id%>">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Question">
             </form>
