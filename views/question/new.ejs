@@ -1,6 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-4 col-sm-push-4">
+        <div class="col-sm-8 col-md-6 col-lg-4 push-sm-2 push-md-3 push-lg-4 text-center">
+            <br>
+            <div>
+                <h2>Adminstration Panel</h2>
+                <h3>Add New Question</h3>
+            </div>
             <div class="text-left">
                 <% if(errorMsg && errorMsg.err) {%>
                     <ul class="alert alert-danger">
@@ -15,24 +20,28 @@
                     <br>
                     <%}%>
             </div>
-            <form action="/question/create" method="POST" class="form-signin">
-                <h2 class="form-signin-heading">Create an Account</h2>
-                <input type="text" name="question_head" placeholder="question head" class="form-control">
-                <input type="text" name="answers[]" placeholder="first answer" class="form-control">
-                <input type="text" name="answers[]" placeholder="second answer" class="form-control">
-                <input type="text" name="answers[]" placeholder="third answer" class="form-control">
-                <input type="checkbox" name="correct_answer[]" value="1">a</input>
-                <input type="checkbox" name="correct_answer[]" value="2">b</input>
-                <input type="checkbox" name="correct_answer[]" value="3">c</input>
+            <form id="question-form" action="/course/<%=course.id%>/question" method="POST" class="form-signin">
+                <input type="text" name="question_head" placeholder="Question head" class="form-control">
+                <input type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control">
+                <input type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control">
+                <input type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control">
+                <select class="form-control" name="correct_answer">
+                    <option value="" disabled selected>Select Correct Answer</option>
+                    <option value="0">A</option>
+                    <option value="1">B</option>
+                    <option value="2">C</option>
+                </select>
                 <select class="form-control" name="difficulty">
-                        <option>Simple</option>
-                        <option>Difficult</option>
-                        </select>
+                    <option value="" disabled selected>Select Difficulty</option>
+                    <option>Simple</option>
+                    <option>Difficult</option>
+                </select>
                 <select class="form-control" name="objective">
-                        <option>understanding</option>
-                        <option>reminding</option>
-                        <option>creativity</option>
-                        </select>
+                   <option value="" disabled selected>Select Objective</option>
+                    <option>Understanding</option>
+                    <option>Reminding</option>
+                    <option>Creativity</option>
+                </select>
 
                 <input type="hidden" name="course_id" value="<%=course.id%>">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Question">

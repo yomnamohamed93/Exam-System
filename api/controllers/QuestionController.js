@@ -18,11 +18,11 @@ module.exports = {
         Question.create(req.body).exec(function(err, result) {
             if (err) {
                 req.session.errorMsg = { err };
-                return res.redirect('/question/new');
+                return res.redirect(`/course/${req.param('course_id')}/question/new`);
             }
             // redirect must be called inside this callback, not outside
             //  return res.redirect('/question');
-            res.json(result);
+            res.redirect(`/course/${req.param('course_id')}`);
         });
     },
 
@@ -37,8 +37,8 @@ module.exports = {
         Question.findOne(req.param('id'), function(err, question) {
             if (err) { return next(err); }
             if (!question) { return next('question not found'); }
-            res.json(question);
-            //return res.view({ question: question });
+            // res.json(question);
+            return res.view('question/findOne', { question: question, course_id: req.param('course_id') });
         });
     },
 
@@ -46,14 +46,14 @@ module.exports = {
         Question.destroy(req.param('id'), function(err, question) {
             if (err) { return next(err); }
             // redirect must be called inside this callback, not outside
-            return res.redirect('/question');
+            return res.redirect(`/course/${req.param('course_id')}/questions`);
         });
     },
     edit: function(req, res, next) {
         Question.findOne(req.param('id'), function(err, question) {
             if (err) { return next(err); }
             if (!question) { return next("question not found"); }
-            return res.view({ question: question });
+            return res.view({ question: question, course_id: req.param('course_id') });
         });
 
 

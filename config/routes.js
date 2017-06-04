@@ -34,7 +34,33 @@ module.exports.routes = {
 
     '/': {
         view: 'static/index'
-    }
+    },
+
+    /****************
+     * Course Routes *
+     * **************/
+    'get /course/new': 'CourseController.new',
+    'post /course': 'CourseController.create',
+    'get /course': 'CourseController.find',
+    'get /course/:id': 'CourseController.findOne',
+    'get /course/edit/:id': 'CourseController.edit',
+    'put /course/:id': 'CourseController.update',
+    'delete /course/:id': 'CourseController.destroy',
+    'get /course/:course_id/questions': 'CourseController.populate',
+
+    /******************
+     * Question Routes *
+     * ****************/
+
+    // QuestionControllerfind: CourseController.populate used instead,
+    // accessible via /course/:course_id/questions
+    'get /course/:course_id/question/new': 'QuestionController.new',
+    'post /course/:course_id/question': 'QuestionController.create',
+    'get /course/:course_id/question/:id': 'QuestionController.findOne',
+    'get /course/:course_id/question/edit/:id': 'QuestionController.edit',
+    'put /course/:course_id/question/:id': 'QuestionController.update',
+    'delete /course/:course_id/question/:id': 'QuestionController.destroy',
+    // QuestionController.populate, .add, .remove: Not Available, not child associations
 
     /***************************************************************************
      *                                                                          *

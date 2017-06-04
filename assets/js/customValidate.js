@@ -27,5 +27,32 @@ $(document).ready(function() {
             element.text('OK!');
         }
     });
-
+    $('#question-form').validate({
+        rules: {
+            'question_head': {
+                required: true,
+            },
+            'answers[0]': {
+                required: true,
+            },
+            'answers[1]': {
+                required: true,
+            },
+            'answers[2]': {
+                required: true,
+            },
+            'correct_answer': {
+                required: true,
+            },
+            'difficulty': {
+                required: true,
+            },
+            'objective': {
+                required: true,
+            },
+        },
+        success: function(element) {
+            element.text('OK!');
+        }
+    });
 });

@@ -4,35 +4,52 @@
             <br>
             <div>
                 <h2>Adminstration Panel</h2>
-                <h3>question Details</h3>
+                <h3>Question Details</h3>
             </div>
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>
-                        <th class="text-center">question head</th>
-                        <th class="text-center">correct answer</th>
-                        <th class="text-center" colspan="2">Actions</th>
-
+                        <th class="text-center">
+                            <p> Q: <%= question.question_head %> </p>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <%= question.question_head %>
+                            <p>
+                                Difficulty: <%= question.difficulty %>
+                            </p>
+                            <p>
+                                Objective: <%= question.objective %>
+                            </p>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
-                            <%= question.correct_answer %>
+                            <div class="float-left">
+                                <% _.each(question.answers, function(answer, i) { %>
+                                    <p>
+                                        Answer <%=i+1%>: <%= answer %>
+                                    </p>
+                                <% }); %>
+                            </div>
                         </td>
-                        <td><a class="btn btn-success" href="/question/edit/<%=question.id%>">Edit</a></td>
-                        <td>
-                            <form action="/question/<%=question.id%>" method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input class="btn btn-danger" type="submit" name="" value="Delete">
-                            </form>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <p>
+                                Correct answer: <%= question.correct_answer+1 %>
+                            </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <a class="btn btn-success" href="/course/<%=course_id%>/question/edit/<%=question.id%>">Edit</a></td>
+            <form style="display: inline-block;" action="/course/<%=course_id%>/question/<%=question.id%>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-danger" type="submit" name="" value="Delete">
+            </form>
         </div>
     </div>
 </div>

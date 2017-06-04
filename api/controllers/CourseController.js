@@ -17,8 +17,8 @@ module.exports = {
                 return res.redirect('/course/new');
             }
             // redirect must be called inside this callback, not outside
-            //return res.redirect('/course');
-            res.json(course);
+            return res.redirect('/course');
+            // res.json(result);
         });
     },
 
@@ -34,7 +34,7 @@ module.exports = {
         Course.findOne(req.param('id')).populateAll().exec(function(err, course) {
             if (err) { return next(err); }
             if (!course) { return next('course not found'); }
-            return res.view({ course: course });
+            return res.view('course/findOne', { course: course });
             //res.json(course);
         });
     },
@@ -62,6 +62,13 @@ module.exports = {
                 return res.redirect(`/course/edit/${req.param('id')}`);
             }
             return res.redirect('/course');
+        });
+    },
+    populate: function(req, res) {
+        Course.findOne(req.param('course_id')).populateAll().exec(function(err, course, next) {
+            if (err) { return res.serverError(err); }
+            if (!course) { return res.serverError('course not found'); }
+            return res.view('course/findOne', { course: course });
         });
     },
 };

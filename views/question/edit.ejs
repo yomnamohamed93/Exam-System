@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-8 col-md-6 col-lg-4 push-sm-2 push-md-3 push-lg-4 text-center">
             <br>
             <div>
                 <h2>Adminstration Panel</h2>
-                <h3>Add New Course</h3>
-
+                <h3>Edit Question</h3>
             </div>
             <div class="text-left">
                 <% if(errorMsg && errorMsg.err) {%>
@@ -21,12 +20,31 @@
                     <br>
                     <%}%>
             </div>
-            <form action="/question/<%= question.id %>" id="course-form" method="POST" class="form-signin">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="text" name="name" value="<%= question.name %>" class="form-control">
-                <input type="text" name="chapters" value="<%= question.chapters %>" class="form-control">
-                <br>
-                <input type="submit" class="btn btn-lg btn-primary" value="Edit Course">
+            <form id="question-form" action="/course/<%=course_id%>/question" method="POST" class="form-signin">
+                <input type="text" name="question_head" placeholder="Question head" class="form-control" value="<%= question.question_head %>">
+                <input type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control" value="<%= question.answers[0]%>">
+                <input type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control" value="<%= question.answers[1]%>">
+                <input type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control" value="<%= question.answers[2]%>">
+                <select value="<%=question.correct_answer%>" class="form-control" name="correct_answer">
+                    <option disabled >Select Correct Answer</option>
+                    <option value="0">A</option>
+                    <option value="1">B</option>
+                    <option value="2">C</option>
+                </select>
+                <select value="<%= question.difficulty %>" class="form-control" name="difficulty">
+                    <option disabled >Select Difficulty</option>
+                    <option>Simple</option>
+                    <option>Difficult</option>
+                </select>
+                <select value="<%= question.objective %>" class="form-control" name="objective">
+                    <option disabled >Select Objective</option>
+                    <option>Understanding</option>
+                    <option>Reminding</option>
+                    <option>Creativity</option>
+                </select>
+
+                <input type="hidden" name="course_id" value="<%= course_id %>">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Question">
             </form>
         </div>
     </div>
