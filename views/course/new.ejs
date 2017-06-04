@@ -6,7 +6,21 @@
                 <h2>Adminstration Panel</h2>
                 <h3>Add New Course</h3>
             </div>
-            <form action="/course/create" method="POST" class="form-signin">
+            <div class="text-left">
+                <% if(errorMsg && errorMsg.err) {%>
+                    <ul class="alert alert-danger">
+                        <% Object.keys(errorMsg.err.invalidAttributes).forEach(function(attribute){ %>
+                            <% errorMsg.err.invalidAttributes[attribute].forEach(function(rule){ %>
+                                <li>
+                                    <%= `${attribute} : ${rule.rule == 'required' ? 'required' : rule.message}` %>
+                                </li>
+                                <% }); %>
+                                    <%});%>
+                    </ul>
+                    <br>
+                    <%}%>
+            </div>
+            <form action="/course/create" method="POST" id="course-form" class="form-signin">
                 <input type="text" name="name" placeholder="course name" class="form-control">
                 <input type="text" name="chapters" placeholder="chapters" class="form-control">
                 <br>

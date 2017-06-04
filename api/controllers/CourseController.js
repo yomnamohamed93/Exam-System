@@ -12,7 +12,10 @@ module.exports = {
 
     create: function(req, res) {
         Course.create(req.body).exec(function(err, result) {
-            if (err) {}
+            if (err) {
+                req.session.errorMsg = { err };
+                return res.redirect('/course/new');
+            }
             // redirect must be called inside this callback, not outside
             return res.redirect('/course');
         });
@@ -41,7 +44,7 @@ module.exports = {
         });
     },
     edit: function(req, res) {
-        Course.findOne(req.param('id'), function(err, course) {
+        Course.findOne(req.param('id'), function(err, course, next) {
             if (err) { return next(err); }
             if (!course) { return next("course not found"); }
             return res.view({ course: course });
@@ -51,8 +54,10 @@ module.exports = {
     },
     update: function(req, res) {
         Course.update(req.param('id'), req.params.all(), function(err) {
-            if (err) { return next(err); }
-            // redirect must be called inside this callback, not outside
+            if (err) {
+                req.session.errorMsg = { err };
+                return res.redirect(`/course/edit/${req.param('id')}`);
+            }
             return res.redirect('/course');
         });
     },

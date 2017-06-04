@@ -5,8 +5,23 @@
             <div>
                 <h2>Adminstration Panel</h2>
                 <h3>Add New Course</h3>
+
             </div>
-            <form action="/course/<%= course.id %>" method="POST" class="form-signin">
+            <div class="text-left">
+                <% if(errorMsg && errorMsg.err) {%>
+                    <ul class="alert alert-danger">
+                        <% Object.keys(errorMsg.err.invalidAttributes).forEach(function(attribute){ %>
+                            <% errorMsg.err.invalidAttributes[attribute].forEach(function(rule){ %>
+                                <li>
+                                    <%= `${attribute} : ${rule.rule == 'required' ? 'required' : rule.message}` %>
+                                </li>
+                                <% }); %>
+                                    <%});%>
+                    </ul>
+                    <br>
+                    <%}%>
+            </div>
+            <form action="/course/<%= course.id %>" id="course-form" method="POST" class="form-signin">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="text" name="name" value="<%= course.name %>" class="form-control">
                 <input type="text" name="chapters" value="<%= course.chapters %>" class="form-control">
