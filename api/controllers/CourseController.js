@@ -28,23 +28,25 @@ module.exports = {
         });
     },
 
-    findOne: function(req, res) {
-        Course.findOne(req.param('id'), function(err, course) {
+    findOne: function(req, res, next) {
+        // Course.findOne(req.param('id'), function(err, course, next) {
+        Course.findOne(req.param('id')).populateAll().exec(function(err, course) {
             if (err) { return next(err); }
             if (!course) { return next('course not found'); }
-            return res.view({ course: course });
+            //return res.view({ course: course });
+            res.json(course);
         });
     },
 
-    destroy: function(req, res) {
+    destroy: function(req, res, next) {
         Course.destroy(req.param('id'), function(err, course) {
             if (err) { return next(err); }
             // redirect must be called inside this callback, not outside
             return res.redirect('/course');
         });
     },
-    edit: function(req, res) {
-        Course.findOne(req.param('id'), function(err, course, next) {
+    edit: function(req, res, next) {
+        Course.findOne(req.param('id'), function(err, course) {
             if (err) { return next(err); }
             if (!course) { return next("course not found"); }
             return res.view({ course: course });

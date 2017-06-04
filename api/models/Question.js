@@ -28,7 +28,7 @@ module.exports = {
             type: "string",
             required: true
         },
-        course: {
+        course_id: {
             model: 'course',
             required: true
         }

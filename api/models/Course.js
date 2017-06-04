@@ -18,7 +18,7 @@ module.exports = {
         },
         questions: {
             collection: 'question',
-            via: 'course'
+            via: 'course_id'
         }
 
     },
