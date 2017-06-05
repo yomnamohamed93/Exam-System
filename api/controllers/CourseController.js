@@ -42,10 +42,12 @@ module.exports = {
 
     destroy: function(req, res, next) {
         Course.destroy(req.param('id'), function(err, course) {
-            if (err) { return next(err); }
-            // redirect must be called inside this callback, not outside
-            return res.redirect('/course');
+            Question.destroy({ course_id: req.param('id') }).exec(function(err, questions) {
+                if (err) { return next(err); }
+                return res.redirect('/course');
+            });
         });
+
     },
     edit: function(req, res, next) {
         Course.findOne(req.param('id'), function(err, course) {

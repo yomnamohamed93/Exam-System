@@ -53,10 +53,12 @@
                     </tr>
                 </tbody>
             </table>
+            <a class="btn btn-warning" href="/course/<%=course_id%>">Back to course</a>
             <a class="btn btn-success" href="/course/<%=course_id%>/question/edit/<%=question.id%>">Edit</a></td>
             <form style="display: inline-block;" action="/course/<%=course_id%>/question/<%=question.id%>" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <input class="btn btn-danger" type="submit" name="" value="Delete">
+
             </form>
         </div>
     </div>

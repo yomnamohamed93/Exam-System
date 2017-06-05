@@ -20,7 +20,7 @@ module.exports = {
                 }]
             }
         }
-        return res.view('static/login');
+        return res.view('static/login', { errorMsg: req.session.errorMsg });
     },
     logout: function(req, res) {
         delete req.session.admin;

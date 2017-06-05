@@ -15,15 +15,30 @@ module.exports = {
     },
 
     create: function(req, res) {
-        Question.create(req.body).exec(function(err, result) {
-            if (err) {
-                req.session.errorMsg = { err };
+        course = Course.findOne(req.param('course_id'), function(err, course) {
+            if (req.param('chapter') <= course.chapters) {
+                Question.create(req.body).exec(function(err, result) {
+                    if (err) {
+                        req.session.errorMsg = { err };
+                        return res.redirect(`/course/${req.param('course_id')}/question/new`);
+                    }
+                    //  return res.redirect('/question');
+                    res.redirect(`/course/${req.param('course_id')}`);
+                });
+            } else {
+                req.session.errorMsg = {};
+                req.session.errorMsg.err = {
+                    invalidAttributes: {
+                        'error': [{
+                            rule: 'error',
+                            message: 'Incorrect number of chapters'
+                        }]
+                    }
+                }
                 return res.redirect(`/course/${req.param('course_id')}/question/new`);
             }
-            // redirect must be called inside this callback, not outside
-            //  return res.redirect('/question');
-            res.redirect(`/course/${req.param('course_id')}`);
         });
+
     },
 
     find: function(req, res) {

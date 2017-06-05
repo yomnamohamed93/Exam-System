@@ -26,14 +26,16 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    '*': 'errorMsg',
-
+    // '*': 'errorMsg',
+    AdminController: {
+        '*': ['errorMsg']
+    },
     CourseController: {
-        '*': 'adminAuth'
+        '*': ['adminAuth', 'errorMsg']
     },
 
     QuestionController: {
-        '*': 'adminAuth'
+        '*': ['adminAuth', 'errorMsg']
     }
     /***************************************************************************
      *                                                                          *
