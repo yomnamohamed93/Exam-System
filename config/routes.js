@@ -35,11 +35,18 @@ module.exports.routes = {
     '/': {
         view: 'static/index'
     },
+
     /****************
      * Admin Routes *
      * **************/
     'post /admin/login': 'AdminController.login',
     'get /admin/logout': 'AdminController.logout',
+    /****************
+     * Exam Routes *
+     * **************/
+    'get /student': 'ExamController.selectCourse',
+    'post /exam/new': 'ExamController.new',
+    'post /exam': 'ExamController.create',
     /****************
      * Course Routes *
      * **************/
