@@ -35,7 +35,11 @@ module.exports.routes = {
     '/': {
         view: 'static/index'
     },
-
+    /****************
+     * Admin Routes *
+     * **************/
+    'post /admin/login': 'AdminController.login',
+    'get /admin/logout': 'AdminController.logout',
     /****************
      * Course Routes *
      * **************/

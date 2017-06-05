@@ -17,8 +17,9 @@ module.exports = {
                 return res.redirect('/course/new');
             }
             // redirect must be called inside this callback, not outside
-            return res.redirect('/course');
-            // res.json(result);
+            console.log('creat');
+            return res.redirect('/course')
+                // res.json(result);
         });
     },
 

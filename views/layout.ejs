@@ -54,11 +54,14 @@
     <div class="navbar navbar-inverse bg-inverse">
         <div class="container">
             <a class="navbar-brand" href="/">CITC</a>
+            <% if(admin.loggedIn && admin.loggedIn==true){%>
+                <a class="float-right btn btn-outline-danger" href="/admin/logout">Logout</a>
+                <%}%>
         </div>
     </div>
     <div class="appBody">
         <%- body %>
-        <pre>
+            <pre>
         
         </pre>
     </div>
@@ -67,13 +70,13 @@
         <div class="float-right mr-5">
             <div>
                 <span>Copyright&copy; </span><a href="http://citc.mans.edu.eg/en">CITC</a>
-            <div>
-            <div>
-                All rights reserved CITC, 2017.
-            </div>            
+                <div>
+                    <div>
+                        All rights reserved CITC, 2017.
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
     </footer>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>

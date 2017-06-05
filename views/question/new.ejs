@@ -21,6 +21,7 @@
                     <%}%>
             </div>
             <form id="question-form" action="/course/<%=course.id%>/question" method="POST" class="form-signin">
+                <input class="form-control" type="number" name="chapter" placeholder="Chapter no" min="1">
                 <input type="text" name="question_head" placeholder="Question head" class="form-control">
                 <input type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control">
                 <input type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control">

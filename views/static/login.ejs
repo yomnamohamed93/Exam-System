@@ -4,7 +4,7 @@
             <br>
             <div>
                 <h2>Adminstration Panel</h2>
-                <h3>Add New Course</h3>
+                <h3>Log in</h3>
             </div>
             <div class="text-left">
                 <% if(errorMsg && errorMsg.err) {%>
@@ -20,12 +20,11 @@
                     <br>
                     <%}%>
             </div>
-            <form action="/course" method="POST" id="course-form" class="form-signin">
-                <input type="text" name="name" placeholder="course name" class="form-control">
-                <!--<input type="text" name="chapters" placeholder="chapters" class="form-control">-->
-                <input class="form-control" type="number" name="chapters" placeholder="Chapters number" min="1">
+            <form action="/admin/login" method="POST" id="admin-form" class="form-signin">
+                <input type="text" name="admin" placeholder="user name" class="form-control">
+                <input type="password" name="password" placeholder="password" class="form-control">
                 <br>
-                <input type="submit" class="btn btn-lg btn-primary" value="Add Course">
+                <input type="submit" class="btn btn-lg btn-primary" value="Login">
             </form>
         </div>
     </div>

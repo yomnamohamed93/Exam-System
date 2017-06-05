@@ -10,7 +10,10 @@
                 <thead>
                     <tr>
                         <th class="text-center">
-                            <p> Q: <%= question.question_head %> </p>
+                            <p> CH:
+                                <%= question.chapter %><br> Q:
+                                    <%= question.question_head %>
+                            </p>
                         </th>
                     </tr>
                 </thead>
@@ -18,28 +21,33 @@
                     <tr>
                         <td>
                             <p>
-                                Difficulty: <%= question.difficulty %>
+                                Difficulty:
+                                <%= question.difficulty %>
                             </p>
                             <p>
-                                Objective: <%= question.objective %>
+                                Objective:
+                                <%= question.objective %>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="float-left">
+                            <div class="float-center">
                                 <% _.each(question.answers, function(answer, i) { %>
                                     <p>
-                                        Answer <%=i+1%>: <%= answer %>
+                                        Answer
+                                        <%=i+1%>:
+                                            <%= answer %>
                                     </p>
-                                <% }); %>
+                                    <% }); %>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="text-center">
                             <p>
-                                Correct answer: <%= question.correct_answer+1 %>
+                                Correct answer:
+                                <%= question.correct_answer+1 %>
                             </p>
                         </td>
                     </tr>

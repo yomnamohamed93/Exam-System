@@ -28,6 +28,13 @@ module.exports.policies = {
 
     '*': 'errorMsg',
 
+    CourseController: {
+        '*': 'adminAuth'
+    },
+
+    QuestionController: {
+        '*': 'adminAuth'
+    }
     /***************************************************************************
      *                                                                          *
      * Here's an example of mapping some policies to run before a controller    *

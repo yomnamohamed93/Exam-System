@@ -28,6 +28,10 @@ module.exports = {
             type: "string",
             required: true
         },
+        chapter: {
+            type: 'integer',
+            required: true
+        },
         course_id: {
             model: 'course',
             required: true

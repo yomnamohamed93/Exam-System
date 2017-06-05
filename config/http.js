@@ -39,6 +39,7 @@ module.exports.http = {
             'compress',
             'methodOverride',
             'myRequestLogger',
+            'myResLocalSetter',
             'poweredBy',
             '$custom',
             'router',
@@ -64,6 +65,12 @@ module.exports.http = {
             console.log("Requested :: ", req.method, req.url);
             return next();
         },
+        myResLocalSetter: function(req, res, next) {
+            res.locals.admin = {};
+            res.locals.errorMsg = {}
+            return next();
+        }
+
         /***************************************************************************
          *                                                                          *
          * The body parser that will handle incoming multipart HTTP requests. By    *

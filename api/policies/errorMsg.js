@@ -2,8 +2,9 @@ module.exports = function(req, res, next) {
     console.log('Applying errorMsg policy');
     console.log(JSON.stringify(req.allParams()));
 
-    res.locals.errorMsg = {};
+    // res.locals.errorMsg = {};
     if (req.session.errorMsg) {
+        console.log(JSON.stringify(req.session.errorMsg));
         res.locals.errorMsg = _.clone(req.session.errorMsg);
         req.session.errorMsg = {};
     }
