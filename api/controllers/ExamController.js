@@ -9,7 +9,11 @@ module.exports = {
 
     },
     create: function(req, res) {
-        res.json(req.allParams());
+        params = req.allParams();
+        ExamService.create(params)
+            .then(function(exam) { res.json(exam) })
+            .catch(function(err) { res.serverError(err) });
+        // res.json(params);
     },
     selectCourse: function(req, res) {
         Course.find(function(err, courses) {
