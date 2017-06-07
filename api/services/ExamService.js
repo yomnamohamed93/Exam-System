@@ -4,20 +4,23 @@ module.exports = {
             function(resolve, reject) {
                 let examNotFinished = true;
                 Question.find({ course_id: params.course_id }, function(err, questions) {
-                    let exam = [];
-                    while (examNotFinished) {
-                        index = random(questions.length - 1);
-                        let question = questions[index];
-                        console.log(params.Q_chapter, questions);
+                    let exam = [],
+                        l = questions.length;
+                    console.log(questions.length);
+                    for (let question = {}, i = 0; i < l; i++) {
+                        index = random(questions.length);
+                        question = questions[index];
+                        console.log(params.Q_chapter, question);
                         if (chapterLimitNotReached(params.Q_chapter, question.chapter, exam)) {
                             exam.push(question);
-                            questions.splice(questions.indexOf(question), 1);
-                            examNotFinished = false;
-                            resolve(exam);
                         }
-                        //check if the exam is ready
-                    }
-                    // resolve(questions);
+                        questions.splice(questions.indexOf(question), 1);
+
+                    } //for
+                    // check if the exam is ready
+                    let total_ques = params.Q_chapter * params.No_chapters;
+                    if (exam.length == total_ques) { resolve(exam); }
+                    reject("err");
                 });
             });
 
