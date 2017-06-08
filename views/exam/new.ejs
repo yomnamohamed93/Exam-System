@@ -24,23 +24,23 @@
                     <br>
                     <%}%>
             </div>
-            <form id="exam-form" action="/exam" method="POST" oninput="total_ques.value=parseInt(No_chapters.value)*parseInt(Q_chapter.value);difficult.value=parseInt(total_ques.value)-parseInt(simple.value)" class="form-signin">
+            <form id="exam-form" action="/exam" method="POST" oninput="total_ques.value=parseInt(No_chapters.value)*parseInt(Q_chapter.value);Difficult.value=parseInt(total_ques.value)-parseInt(Simple.value)" class="form-signin">
 
-                <input class="form-control" type="number" name="Q_chapter" placeholder=" questions per chapter" min="1">
+                <input required class="form-control" type="number" name="Q_chapter" placeholder=" questions per chapter" min="1">
                 <input type="hidden" name="No_chapters" value="<%= course.chapters %>">
                 <label style="color:blue" for="total_ques">Total No.Questions = </label>
                 <output style="color:blue" name="total_ques"></output>
                 <div class="form-group">
                     <label for="">Difficulty:</label>
-                    <input class="form-control" type="number" name="simple" placeholder=" number of simple questions" min="1">
-                    <input class="form-control" type="number" name="difficult" placeholder=" number of difficult questions" min="1">
+                    <input required class="form-control" type="number" name="Simple" placeholder=" number of simple questions" min="1">
+                    <input required class="form-control" type="number" name="Difficult" placeholder=" number of difficult questions" min="1">
                 </div>
 
                 <div class="form-group">
                     <label for="">Objectives:</label>
-                    <input class="form-control" type="number" name="reminding" placeholder=" number of reminding questions" min="1">
-                    <input class="form-control" type="number" name="understanding" placeholder=" number of understanding questions" min="1">
-                    <input class="form-control" type="number" name="creativity" placeholder=" number of creativity questions" min="1">
+                    <input required class="form-control" type="number" name="Reminding" placeholder=" number of reminding questions" min="1">
+                    <input required class="form-control" type="number" name="Understanding" placeholder=" number of understanding questions" min="1">
+                    <input required class="form-control" type="number" name="Creativity" placeholder=" number of creativity questions" min="1">
                 </div>
 
                 <input type="hidden" name="course_id" value="<%=course.id%>">
@@ -48,7 +48,7 @@
                 <input type="submit" class="btn btn-lg btn-primary" value="Generate Exam">
             </form>
             <br>
-            <a class="btn btn-warning" href="">Back</a>
+            <a class="btn btn-warning" href="/exam">Back</a>
         </div>
     </div>
 </div>

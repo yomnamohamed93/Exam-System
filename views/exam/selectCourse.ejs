@@ -8,7 +8,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 push-sm-2 push-md-3 push-lg-4 text-center">
                     <form id="exam-form" action="/exam/new" class="form-signin" method="POST">
 
-                        <select class="form-control" name="course_id">
+                        <select required class="form-control" name="course_id">
                     <option value="" disabled selected>Select Course</option>
                         <% _.each(courses, function(course) { %>
                     <option value="<%= course.id %>"><%= course.name %></option>

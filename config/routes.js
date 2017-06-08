@@ -44,7 +44,7 @@ module.exports.routes = {
     /****************
      * Exam Routes *
      * **************/
-    'get /student': 'ExamController.selectCourse',
+    'get /exam': 'ExamController.selectCourse',
     'post /exam/new': 'ExamController.new',
     'post /exam': 'ExamController.create',
     /****************

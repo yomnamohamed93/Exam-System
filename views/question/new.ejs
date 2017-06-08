@@ -21,23 +21,23 @@
                     <%}%>
             </div>
             <form id="question-form" action="/course/<%=course.id%>/question" method="POST" class="form-signin">
-                <input class="form-control" type="number" name="chapter" placeholder="Chapter no" min="1">
-                <input type="text" name="question_head" placeholder="Question head" class="form-control">
-                <input type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control">
-                <input type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control">
-                <input type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control">
-                <select class="form-control" name="correct_answer">
+                <input required class="form-control" type="number" name="chapter" placeholder="Chapter no" min="1">
+                <input required type="text" name="question_head" placeholder="Question head" class="form-control">
+                <input required type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control">
+                <input required type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control">
+                <input required type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control">
+                <select required class="form-control" name="correct_answer">
                     <option value="" disabled selected>Select Correct Answer</option>
                     <option value="0">A</option>
                     <option value="1">B</option>
                     <option value="2">C</option>
                 </select>
-                <select class="form-control" name="difficulty">
+                <select required class="form-control" name="difficulty">
                     <option value="" disabled selected>Select Difficulty</option>
                     <option>Simple</option>
                     <option>Difficult</option>
                 </select>
-                <select class="form-control" name="objective">
+                <select required class="form-control" name="objective">
                    <option value="" disabled selected>Select Objective</option>
                     <option>Understanding</option>
                     <option>Reminding</option>

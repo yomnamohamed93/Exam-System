@@ -21,9 +21,8 @@
                     <%}%>
             </div>
             <form action="/course" method="POST" id="course-form" class="form-signin">
-                <input type="text" name="name" placeholder="course name" class="form-control">
-                <!--<input type="text" name="chapters" placeholder="chapters" class="form-control">-->
-                <input class="form-control" type="number" name="chapters" placeholder="Chapters number" min="1">
+                <input required type="text" name="name" placeholder="course name" class="form-control">
+                <input required class="form-control" type="number" name="chapters" placeholder="Chapters number" min="1">
                 <br>
                 <input type="submit" class="btn btn-lg btn-primary" value="Add Course">
             </form>

@@ -3,47 +3,38 @@
         <div class="col-xs-8 col-sm-8 push-sm-2 push-xs-2 text-center">
             <br>
             <div>
-                <h2>Adminstration Panel</h2>
-                <h3>Question Details</h3>
+                <h3>Course Exam</h3>
             </div>
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>
                         <th class="text-center">
-                            <p> CH:
+                            <p> Course Exam
                             </p>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <p>
-                                Difficulty:
-                            </p>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="float-center">
+
+                           <div class="float-center">
                                 <% _.each(exam, function(question, i) { %>
-                                    <p>
-                                        Answer
-                                        <%=i+1%>:
-                                            <%= question.question_head %>
-                                    </p>
-                                    <% }); %>
+                                    <tr>
+                                        <td> َQuestion <%= i+1 %>:
+                                        <%= question.question_head %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="float-left">
+                                                <p class="text-left"> A) <%= question.answers[0] %></p>
+                                                <p class="text-left"> B) <%= question.answers[1] %></p>
+                                                <p class="text-left"> C) <%= question.answers[2] %></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }); %>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <p>
-                                Correct answer:
-                            </p>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

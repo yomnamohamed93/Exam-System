@@ -5,13 +5,26 @@ module.exports = {
                 let examNotFinished = true;
                 Question.find({ course_id: params.course_id }, function(err, questions) {
                     let exam = [],
-                        l = questions.length;
-                    console.log(questions.length);
-                    for (let question = {}, i = 0; i < l; i++) {
+                        questionPoolLength = questions.length;
+                    console.log(questionPoolLength);
+                    for (let question = {}, i = 0; i < questionPoolLength; i++) {
                         index = random(questions.length);
                         question = questions[index];
-                        console.log(params.Q_chapter, question);
-                        if (chapterLimitNotReached(params.Q_chapter, question.chapter, exam)) {
+                        // if (chapterLimitNotReached(params.Q_chapter, question.chapter, exam)) {
+                        //     exam.push(question);
+                        // }
+                        // if (difficultyLevelLimitNotReached(params[question.difficulty], question.difficulty, exam)) {
+                        //     console.log('difficulty', params[question.difficulty]);
+                        //     exam.push(question);
+                        // }
+                        // if (objectiveLimitNotReached(params[question.objective], question.objective, exam)) {
+                        //     console.log('obj', params[question.objective]);
+                        //     exam.push(question);
+                        // }
+
+                        if (chapterLimitNotReached(params.Q_chapter, question.chapter, exam) &&
+                            difficultyLevelLimitNotReached(params[question.difficulty], question.difficulty, exam) &&
+                            objectiveLimitNotReached(params[question.objective], question.objective, exam)) {
                             exam.push(question);
                         }
                         questions.splice(questions.indexOf(question), 1);
@@ -23,7 +36,6 @@ module.exports = {
                     reject("err");
                 });
             });
-
     }
 }
 
@@ -34,6 +46,20 @@ function random(max) {
 function chapterLimitNotReached(limit, chapter, questions) {
     let matchedQuestions = questions.filter(function(question) {
         return question.chapter == chapter;
+    });
+    return matchedQuestions.length < limit;
+}
+
+function difficultyLevelLimitNotReached(limit, difficultyLevel, questions) {
+    let matchedQuestions = questions.filter(function(question) {
+        return question.difficulty == difficultyLevel;
+    });
+    return matchedQuestions.length < limit;
+}
+
+function objectiveLimitNotReached(limit, objective, questions) {
+    let matchedQuestions = questions.filter(function(question) {
+        return question.objective == objective;
     });
     return matchedQuestions.length < limit;
 }

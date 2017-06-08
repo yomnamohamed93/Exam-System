@@ -11,48 +11,48 @@ $(document).ready(function() {
     }, 'Please enter only letters');
 
     // Validate course create and edit form
-    $('#course-form').validate({
-        rules: {
-            name: {
-                required: true,
-                lettersonly: true,
-            },
-            chapters: {
-                required: true,
-                number: true,
-                min: 1,
-            }
-        },
-        success: function(element) {
-            element.text('OK!');
-        }
-    });
-    $('#question-form').validate({
-        rules: {
-            'question_head': {
-                required: true,
-            },
-            'answers[0]': {
-                required: true,
-            },
-            'answers[1]': {
-                required: true,
-            },
-            'answers[2]': {
-                required: true,
-            },
-            'correct_answer': {
-                required: true,
-            },
-            'difficulty': {
-                required: true,
-            },
-            'objective': {
-                required: true,
-            },
-        },
-        success: function(element) {
-            element.text('OK!');
-        }
-    });
+    // $('#course-form').validate({
+    //     rules: {
+    //         name: {
+    //             required: true,
+    //             lettersonly: true,
+    //         },
+    //         chapters: {
+    //             required: true,
+    //             number: true,
+    //             min: 1,
+    //         }
+    //     },
+    //     success: function(element) {
+    //         element.text('OK!');
+    //     }
+    // });
+    // $('#question-form').validate({
+    //     rules: {
+    //         'question_head': {
+    //             required: true,
+    //         },
+    //         'answers[0]': {
+    //             required: true,
+    //         },
+    //         'answers[1]': {
+    //             required: true,
+    //         },
+    //         'answers[2]': {
+    //             required: true,
+    //         },
+    //         'correct_answer': {
+    //             required: true,
+    //         },
+    //         'difficulty': {
+    //             required: true,
+    //         },
+    //         'objective': {
+    //             required: true,
+    //         },
+    //     },
+    //     success: function(element) {
+    //         element.text('OK!');
+    //     }
+    // });
 });

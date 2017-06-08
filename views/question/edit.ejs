@@ -20,23 +20,25 @@
                     <br>
                     <%}%>
             </div>
-            <form id="question-form" action="/course/<%=course_id%>/question" method="POST" class="form-signin">
-                <input type="text" name="question_head" placeholder="Question head" class="form-control" value="<%= question.question_head %>">
-                <input type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control" value="<%= question.answers[0]%>">
-                <input type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control" value="<%= question.answers[1]%>">
-                <input type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control" value="<%= question.answers[2]%>">
-                <select value="<%=question.correct_answer%>" class="form-control" name="correct_answer">
+            <form id="question-form" action="/course/<%=course_id%>/question/<%= question.id %>" method="POST" class="form-signin">
+                <input type="hidden" name="_method" value="PUT">
+                <input required class="form-control" type="number" name="chapter" value="<%= question.chapter %>" min="1">
+                <input required type="text" name="question_head" placeholder="Question head" class="form-control" value="<%= question.question_head %>">
+                <input required type="text" name="answers[0]" placeholder="First Answer (A)" class="form-control" value="<%= question.answers[0]%>">
+                <input required type="text" name="answers[1]" placeholder="Second Answer (B)" class="form-control" value="<%= question.answers[1]%>">
+                <input required type="text" name="answers[2]" placeholder="Third Answer (C)" class="form-control" value="<%= question.answers[2]%>">
+                <select required value="<%=question.correct_answer%>" class="form-control" name="correct_answer">
                     <option disabled >Select Correct Answer</option>
                     <option value="0">A</option>
                     <option value="1">B</option>
                     <option value="2">C</option>
                 </select>
-                <select value="<%= question.difficulty %>" class="form-control" name="difficulty">
+                <select required value="<%= question.difficulty %>" class="form-control" name="difficulty">
                     <option disabled >Select Difficulty</option>
                     <option>Simple</option>
                     <option>Difficult</option>
                 </select>
-                <select value="<%= question.objective %>" class="form-control" name="objective">
+                <select required value="<%= question.objective %>" class="form-control" name="objective">
                     <option disabled >Select Objective</option>
                     <option>Understanding</option>
                     <option>Reminding</option>
@@ -44,7 +46,7 @@
                 </select>
 
                 <input type="hidden" name="course_id" value="<%= course_id %>">
-                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Question">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Update Question">
             </form>
             <br>
             <a class="btn btn-warning" href="/course/<%=course_id%>">Back to course</a>

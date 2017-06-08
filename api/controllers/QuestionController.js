@@ -74,12 +74,28 @@ module.exports = {
 
     },
     update: function(req, res) {
-        Question.update(req.param('id'), req.params.all(), function(err) {
-            if (err) {
-                req.session.errorMsg = { err };
-                return res.redirect(`/question/edit/${req.param('id')}`);
+        course = Course.findOne(req.param('course_id'), function(err, course) {
+            if (req.param('chapter') <= course.chapters) {
+                Question.update(req.param('id'), req.params.all(), function(err) {
+                    if (err) {
+                        req.session.errorMsg = { err };
+                        return res.redirect(`/course/${req.param('course_id')}/question/edit/${req.param('id')}`);
+                    }
+                    return res.redirect(`/course/${req.param('course_id')}/question/${req.param('id')}`);
+                });
+            } else {
+                req.session.errorMsg = {};
+                req.session.errorMsg.err = {
+                    invalidAttributes: {
+                        'error': [{
+                            rule: 'error',
+                            message: 'Incorrect number of chapters'
+                        }]
+                    }
+                }
+                return res.redirect(`/course/${req.param('course_id')}/question/edit/${req.param('id')}`);
+
             }
-            return res.redirect('/question');
         });
     },
 };
