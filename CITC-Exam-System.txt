@@ -1,0 +1,20 @@
+User Stories:
+
+- As an admin, I can add new courses specifying Name and no of chapters
+- As an admin, I can edit, delete, view existing courses
+
+- As an admin, I can add new questions to existing courses,specifying head, answers, correct answer, objective, difficulty and chapter.
+- As an admin, I can edit, delete, view existing questions
+
+- As an admin, I can login to admin panel using a username and a password
+
+- As a professor, I can request an exam for a certain subject specifying No. of questions for each chapter, difficulty level, and objective
+- As a professor, I can view the selected exam
+
+Analysis:
+
+- The system comprises of two main resources, courses and questions.
+- The system contains a module called exam module used to generate exams based on selected criteria
+- The system provides a layer of authentication so that only admins can access the adminstration panel to manage courses and questions
+
+
